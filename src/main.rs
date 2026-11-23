@@ -51,14 +51,13 @@ fn main() {
     let mut n: u32 = 5; // number to be checked for primality 
     let mut i = 0; //index of vec p
     let mut is_prime = true; // will be true by default, but set false if any k divides n 
-    while n < 10000 {
-        //if p[i] * p[i] <= n {
-        while p[i] * p[i] <= n {
+    while n < 100000 {
+        while i < p.len() && p[i] * p[i] <= n {
             i += 1;}
-        //} else {
-            for &k in &p[..=i] {
+            for &k in &p[..i] {
                 if n % k == 0 {
                     is_prime = false;
+                    break ; 
                 }
             }
             if is_prime == true {
@@ -68,16 +67,12 @@ fn main() {
                 is_prime = true;
                 n += 2 ;
             }
-            // n += 2;
-        // } // n += 2 ;
-
-        //if p[i] * p[i] <= n {
-        while p[i] * p[i] <= n {
+        while i < p.len() && p[i] * p[i] <= n {
             i += 1;}
-        //} else {
-            for &k in &p[..=i] {
+            for &k in &p[..i] {
                 if n % k == 0 {
                     is_prime = false;
+                    break; 
                 }
             }
             if is_prime == true {
@@ -87,15 +82,10 @@ fn main() {
                 is_prime = true;
                 n += 4 ;
             } 
-            // n += 4;
-        } // n +=4 ;
+            
+        } 
     println!("{}", p.len());
     println!("{:?}", p);}
-    //}
-
-    //println!("{}", p.len());
-    //println!("{:?}", p);
-//}
 //below is junk 2, needs to be replaced with a simple range for space and a vec for known primes
 //     let mut space: Vec<u32> = vec![2, 3, 5,] ;
 //for i in space[2..] {
