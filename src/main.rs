@@ -2,13 +2,13 @@
 //Andreal_Martel::Nov_22_2026
 // below is the start of a first implimentation that I immediately scrapped
 //fn sieve (search_space: u32)-> u32 {
-    //for i in 1...=10000 {
-     //   if i % 6 == 0 {
-      //      if i - 1 == 
-       // }
-    // 
-     //   
-    //}
+//for i in 1...=10000 {
+//   if i % 6 == 0 {
+//      if i - 1 ==
+// }
+//
+//
+//}
 //
 //}
 //Opening notes outlining architecture and reasoning; skip if just interested in code:
@@ -26,17 +26,17 @@
 //
 //plan: while loop to end of range
 //variables for working number (n) vec of all primes (p) and index of vec of all p (i)
-//if p[i] * p[i] < n 
-// i +=1 
-// else for all k in p less than or equal to i 
-// n % k != 0 
-// push n ; 
-// n +=2; 
+//if p[i] * p[i] < n
+// i +=1
+// else for all k in p less than or equal to i
+// n % k != 0
+// push n ;
+// n +=2;
 // else n +=2
 // if p[i] * p[i] < n
 // i += 1
 // else for all k in p less than or equal to i
-// n % k != 0 
+// n % k != 0
 // push n
 // n += 4
 // else n + 4
@@ -44,57 +44,64 @@
 // println p.len
 // print p
 // println to flush print p and actually display it on as few lines as possible.
-// 
- 
-
-
+//
 
 fn main() {
-    let mut p: Vec<u32> = vec![2,3,] ; // vec of discovered primes
-    let mut n: u32 = 5 ; // number to be checked for primality 
-    let mut i = 0 ; //index of vec p
-    let mut is_prime = true ;// will be true by default, but set false if any k divides n 
-    while n < 300 {
-        if p[i] * p[i] <= n {
-            i += 1;
-        } else {
-            for &k in &p[..i]  {
-            if n % k == 0 {
-                is_prime = false ;}
-                } if is_prime == true {
-                    p.push(n)
-                } else { is_prime = true; 
-                } n += 2 ;
-        if p[i] * p[i] <= n {
-                    i += 1 ;
-                } else {
-                    for &k in &p[..i] {
-                        if n % k == 0 {
-                           is_prime = false ;}
-                        }  if is_prime == true {
-                            p.push(n)
-                        } else { is_prime = true 
-                            } n+= 4 
-                        }
-                    }
+    let mut p: Vec<u32> = vec![2, 3]; // vec of discovered primes
+    let mut n: u32 = 5; // number to be checked for primality 
+    let mut i = 0; //index of vec p
+    let mut is_prime = true; // will be true by default, but set false if any k divides n 
+    while n < 10000 {
+        //if p[i] * p[i] <= n {
+        while p[i] * p[i] <= n {
+            i += 1;}
+        //} else {
+            for &k in &p[..=i] {
+                if n % k == 0 {
+                    is_prime = false;
                 }
+            }
+            if is_prime == true {
+                p.push(n) ;
+                n += 2 ;
+            } else {
+                is_prime = true;
+                n += 2 ;
+            }
+            // n += 2;
+        // } // n += 2 ;
 
+        //if p[i] * p[i] <= n {
+        while p[i] * p[i] <= n {
+            i += 1;}
+        //} else {
+            for &k in &p[..=i] {
+                if n % k == 0 {
+                    is_prime = false;
+                }
+            }
+            if is_prime == true {
+                p.push(n);
+                n += 4 ;
+            } else {
+                is_prime = true;
+                n += 4 ;
+            } 
+            // n += 4;
+        } // n +=4 ;
+    println!("{}", p.len());
+    println!("{:?}", p);}
+    //}
 
-        
-        
-
-        
-    
-     println!("{}", p.len());
-    println!("{:?}", p);
-}
+    //println!("{}", p.len());
+    //println!("{:?}", p);
+//}
 //below is junk 2, needs to be replaced with a simple range for space and a vec for known primes
 //     let mut space: Vec<u32> = vec![2, 3, 5,] ;
-    //for i in space[2..] {
-        //if (i + 2) % space[2..] != 0 
-            //space.push(i + 2)
-        //if else (i + 4) % space[2..] != 0 
-            //space.push(i + 4)
-    //}
-    //println!("Primes: {:?}", space);
-
+//for i in space[2..] {
+//if (i + 2) % space[2..] != 0
+//space.push(i + 2)
+//if else (i + 4) % space[2..] != 0
+//space.push(i + 4)
+//}
+//println!("Primes: {:?}", space);
