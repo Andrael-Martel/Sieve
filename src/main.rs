@@ -22,15 +22,72 @@
 //the way to go for a storable list but we haven't covered those yet. Arrays (which we have covered)
 //aren't growable, so I may have to build the logic minus the storage (which is critical for
 //actually checking the divisibility of i against) so that it *would* work if that storage were
-//there to check against. 
+//there to check against.
+//
+//plan: while loop to end of range
+//variables for working number (n) vec of all primes (p) and index of vec of all p (i)
+//if p[i] * p[i] < n 
+// i +=1 
+// else for all k in p less than or equal to i 
+// n % k != 0 
+// push n ; 
+// n +=2; 
+// else n +=2
+// if p[i] * p[i] < n
+// i += 1
+// else for all k in p less than or equal to i
+// n % k != 0 
+// push n
+// n += 4
+// else n + 4
+// end while
+// println p.len
+// print p
+// println to flush print p and actually display it on as few lines as possible.
+// 
+ 
+
+
+
 fn main() {
-    let mut p: Vec<u32> = vec![2,3,] ;
-    let mut n: u32 = 5 ;
-    while n <= 10000:u32 {
-        if n % p != 0 {
-            p.push(n)
-        }
-    }
+    let mut p: Vec<u32> = vec![2,3,] ; // vec of discovered primes
+    let mut n: u32 = 5 ; // number to be checked for primality 
+    let mut i = 0 ; //index of vec p
+    let mut is_prime = true ;// will be true by default, but set false if any k divides n 
+    while n < 300 {
+        if p[i] * p[i] <= n {
+            i += 1;
+        } else {
+            for &k in &p[..i]  {
+            if n % k == 0 {
+                is_prime = false ;}
+                } if is_prime == true {
+                    p.push(n)
+                } else { is_prime = true; 
+                } n += 2 ;
+        if p[i] * p[i] <= n {
+                    i += 1 ;
+                } else {
+                    for &k in &p[..i] {
+                        if n % k == 0 {
+                           is_prime = false ;}
+                        }  if is_prime == true {
+                            p.push(n)
+                        } else { is_prime = true 
+                            } n+= 4 
+                        }
+                    }
+                }
+
+
+        
+        
+
+        
+    
+     println!("{}", p.len());
+    println!("{:?}", p);
+}
 //below is junk 2, needs to be replaced with a simple range for space and a vec for known primes
 //     let mut space: Vec<u32> = vec![2, 3, 5,] ;
     //for i in space[2..] {
@@ -40,4 +97,4 @@ fn main() {
             //space.push(i + 4)
     //}
     //println!("Primes: {:?}", space);
-}
+
