@@ -49,43 +49,55 @@
 fn main() {
     let mut p: Vec<u32> = vec![2, 3]; // vec of discovered primes
     let mut n: u32 = 5; // number to be checked for primality 
-    let mut i = 0; //index of vec p
+    let mut i = 2; //index of vec p
     let mut is_prime = true; // will be true by default, but set false if any k divides n 
-    while n < 100000 {
+    let range = 100000;
+    while n < range {
         while i < p.len() && p[i] * p[i] <= n {
-            i += 1;}
-            for &k in &p[..i] {
+            i += 1;
+        }
+        for &k in &p[2..i] {
+            if n % k == 0 {
+                is_prime = false;
+                break;
+            }
+        }
+        if is_prime == true {
+            p.push(n);
+            n += 2;
+        } else {
+            is_prime = true;
+            n += 2;
+        }
+        if n >= range {
+            break;
+        } else {
+            while i < p.len() && p[i] * p[i] <= n {
+                i += 1;
+            }
+            for &k in &p[2..i] {
                 if n % k == 0 {
                     is_prime = false;
-                    break ; 
-                }
-            }
-            if is_prime == true {
-                p.push(n) ;
-                n += 2 ;
-            } else {
-                is_prime = true;
-                n += 2 ;
-            }
-        while i < p.len() && p[i] * p[i] <= n {
-            i += 1;}
-            for &k in &p[..i] {
-                if n % k == 0 {
-                    is_prime = false;
-                    break; 
+                    break;
                 }
             }
             if is_prime == true {
                 p.push(n);
-                n += 4 ;
+                n += 4;
             } else {
                 is_prime = true;
-                n += 4 ;
-            } 
-            
-        } 
+                n += 4;
+            }
+        }
+    }
     println!("{}", p.len());
-    println!("{:?}", p);}
+    let mut no = 0;
+    for _element in &p {
+        print!("Prime # {:?}: {:?}, ", no + 1, p[no]);
+        no += 1;
+    }
+    println!("End")
+}
 //below is junk 2, needs to be replaced with a simple range for space and a vec for known primes
 //     let mut space: Vec<u32> = vec![2, 3, 5,] ;
 //for i in space[2..] {
