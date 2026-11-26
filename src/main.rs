@@ -1,5 +1,11 @@
 //AMDG::IMI::IHS::Ω
 //Andreal_Martel::Nov_22_2026
+// Copyright 2026 Andrael Martel <and.martel@proton.me>
+// Distributed under MIT OR Apache 2.0 license
+// SPDX-License-Identifier: MIT OR Apache-2.0
+//
+//
+// 
 // below is the start of a first implimentation that I immediately scrapped
 //fn sieve (search_space: u32)-> u32 {
 //for i in 1...=10000 {
